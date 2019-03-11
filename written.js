@@ -1,9 +1,10 @@
 $(document).ready(function(){
     var ingredients;
-    
+    var queryURL;
     
     function displayWrittenRecipe() {
-        var queryURL = "https://api.edamam.com/search?q=" + ingredients +"&diet=" + diet +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
+        $(".recipe-views").empty()
+
         
         $.ajax({
             url:queryURL,
@@ -18,17 +19,29 @@ $(document).ready(function(){
                 console.log(recipeList[i]["recipe"]["label"])
                 var recipeImg = $("<img>")
                 recipeImg.attr("src",recipeList[i]["recipe"]["image"])
-                newDiv.append(recipeName, recipeImg)
+                var linkToRecipe = $("<a>").text("Go to Recipe").attr("href" ,recipeList[i]["recipe"]["url"]).addClass("btn btn-primary");
+                newDiv.append(recipeName, recipeImg, linkToRecipe)
                 $(".recipe-views").append(newDiv)
             }
         })
     }
 
     $(".submit").on("click", function(event){
+        
         event.preventDefault()
         ingredients= $("#ingredients").val().trim()
         diet = $("#diet").val();
+        excluded = $("#excluded").val().trim()
         console.log(ingredients)
+        if(!ingredients){
+            return
+        }
+        if(diet){
+            queryURL = "https://api.edamam.com/search?q=" + ingredients +"&diet=" + diet +"&excluded=" + excluded +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
+        }
+        else{
+            queryURL = "https://api.edamam.com/search?q=" + ingredients +"&excluded=" + excluded +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
+        }
         displayWrittenRecipe()
         
     })
