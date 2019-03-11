@@ -1,0 +1,89 @@
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>What the Fridge√</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <style>
+        body{
+            position:relative;
+        }
+        
+        #jumbo{
+            background-image: linear-gradient(to bottom,red, orange);
+            color: white;
+        }
+        #title{
+            font-size: 72px;
+        }
+        footer{
+            background-image: linear-gradient(to bottom,orange, red);
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div id="jumbo" class="jumbotron jumbotron-fluid">
+        <h1 id="title" class="text-center">What the Fridge?!</h1>
+    </div>
+
+    <div id="query-div" class="container mt-5 bg-light border border-dark">
+        <form>
+            <div class="mb-3 mt-2 border-bottom" id="queries">Ingredients</div>
+            <div class="form-group">
+                <label for="ingredients">What do you have on hand?</label>
+                <input class="form-control" id="ingredients">
+            </div>
+            <button id="submit">
+                Submit
+            </button>
+        </form>
+    </div>
+    
+    <div id="recipe-div">
+
+    </div>
+
+    <div class="container">
+        <iframe id="video" width="560" height="315"></iframe>
+    </div>
+    
+    <footer class="jumbotron jumbotron-fluid mt-5">
+
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#submit").on("click", function(event) {
+                event.preventDefault()
+                var foodName = $("#ingredients").val()
+                console.log(foodName)
+                var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=how+to+cook+" + foodName + "&key=AIzaSyDLkMMIuBWt42J1WLEhQ-_pQx0bb9ZmeKo"
+                $("#recipe-div").html("")
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                })
+            
+                .then(function(response) {
+                var videoId = response.items[0].id.videoId
+                console.log(videoId)
+                    $("#video").attr("src", "https://www.youtube.com/embed/" + videoId);
+                
+                    })
+                });
+            
+
+            
+        
+        
+
+});
+    </script>
+</body>
+</html>
+        
