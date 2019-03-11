@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <form>
+        <div class="form-group">
+          <label>Ingredients</label>
+          <input type="text" class="form-control" id="ingredients"  placeholder="What do you have in your fridge?">
+          <label >Diet Preference</label>
+          <select class="custom-select mr-sm-2" id="diet">
+            <option selected>Choose</option>
+            <option value="balanced">Balanced</option>
+            <option value="high-fiber">High-Fiber</option>
+            <option value="high-protein	">High-Protein</option>
+            <option value="low-carb">Low-Carb</option>
+            <option value="low-fat">Low-Fat</option>
+            <option value="low-sodium">Low-Sodium</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary submit">Submit</button>
+      </form>
+
+      <div class="card">
+        <div class="card-header">
+          Quote
+        </div>
+        <div class="card-body recipe-views">
+
+        </div>
+      </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="written.js"></script>
+</body>
+
+</html>
