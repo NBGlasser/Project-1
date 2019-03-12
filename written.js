@@ -2,16 +2,26 @@ $(document).ready(function(){
     var ingredients=[];
     var queryURL;
     
-    
-
     function displayWrittenRecipe() {
+        
+        console.log(ingredients)
+        $(".recipe-views").empty()
+        
         jQuery.ajaxPrefilter(function (options) {
             if (options.crossDomain && jQuery.support.cors) {
               options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
             }
           });
         
-        $(".recipe-views").empty()
+        if(!ingredients){
+            return
+        }
+        if(diet){
+            queryURL = "https://api.edamam.com/search?q=" + ingredients +"&diet=" + diet +"&excluded=" + excluded +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
+        }
+        else{
+            queryURL = "https://api.edamam.com/search?q=" + ingredients +"&excluded=" + excluded +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
+        }
 
         $.ajax({
             url:queryURL,
@@ -23,7 +33,6 @@ $(document).ready(function(){
                 var newDiv = $("<div>")
                 var recipeName = $("<p>")
                 recipeName.text(recipeList[i]["recipe"]["label"])
-                console.log(recipeList[i]["recipe"]["label"])
                 var recipeImg = $("<img>")
                 recipeImg.attr("src",recipeList[i]["recipe"]["image"])
                 var linkToRecipe = $("<a>").text("Go to Recipe").attr("href" ,recipeList[i]["recipe"]["url"]).addClass("btn btn-primary");
@@ -37,22 +46,15 @@ $(document).ready(function(){
 
     $(".submit").on("click", function(event){
         event.preventDefault()
-        ingredients.push($("#ingredients").val().trim())
+        
         diet = $("#diet").val();
         excluded = $("#excluded").val().trim()
-        console.log(ingredients)
         
-        displayButton()
-
-        if(!ingredients){
-            return
+        if ($("#ingredients").val()){
+            ingredients.push($("#ingredients").val().trim())
+            displayButton()
         }
-        if(diet){
-            queryURL = "https://api.edamam.com/search?q=" + ingredients +"&diet=" + diet +"&excluded=" + excluded +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
-        }
-        else{
-            queryURL = "https://api.edamam.com/search?q=" + ingredients +"&excluded=" + excluded +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
-        }
+        
         displayWrittenRecipe()
         $("#ingredients").val("")
         $("#excluded").val("") 
@@ -73,5 +75,6 @@ $(document).ready(function(){
         event.preventDefault()
         ingredients.splice(ingredients.indexOf($(this).attr("data-name")),1)
         displayButton()
+        displayWrittenRecipe()
     } )
 })
