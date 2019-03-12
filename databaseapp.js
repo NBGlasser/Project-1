@@ -1,29 +1,45 @@
 
 $(document).ready(function(){
     
- 
+ // Initialize Firebase
 
-var lastChange = childSnapshot.val().timeToStore;
+var config = {
+    apiKey: "AIzaSyBR6USQgTHwdgs0TPjwy2-XI6U8Tgt02VI",
+    authDomain: "project-1-1f815.firebaseapp.com",
+    databaseURL: "https://project-1-1f815.firebaseio.com",
+    projectId: "project-1-1f815",
+    storageBucket: "project-1-1f815.appspot.com",
+    messagingSenderId: "10187316508"
+  };
+  firebase.initializeApp(config);
+  
+  var database = firebase.database();
 
-var difference = moment().subtract(moment(lastChange), "minutes");
+  database.ref().once("value", function (snapshot){
 
-if (difference > 1440) {
+    var lastChange = childSnapshot.val().timeToStore;
+  });
 
-    function databaseUpdate ()
 
-    console.log("It's been more than 24 hours");
+    var difference = moment().subtract(moment(lastChange), "minutes");
 
-}
+        if (difference > 1440) {
 
-else {
+            function databaseUpdate ()
 
-    function noUpdate ()
+            console.log("It's been more than 24 hours");
 
-    // database.once
+        }
 
-    // And other stuff
+        else {
 
-}
+            function noUpdate ()
+
+            // database.once
+
+            // And other stuff
+
+        }
 
 
 
@@ -81,29 +97,27 @@ else {
                 
 
             });
-               
-
-                   
-                
                 
 
-            
+          
+           
+
             if (counter < nutrientsArrOfObj.length){
             queryURL = "https://api.edamam.com/search?q=&nutrients%5B" + nutrientsArrOfObj[counter]["nameCode"] + "%5D=" + nutrientsArrOfObj[counter]["suggestedIntakeCode"] + "&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
             counter ++;
             } else {
             counter = 0
             queryURL = "https://api.edamam.com/search?q=&nutrients%5B" + nutrientsArrOfObj[counter]["nameCode"] + "%5D=" + nutrientsArrOfObj[counter]["suggestedIntakeCode"] + "&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
-
+            counter ++;
             }
 
             database.ref().set(counter);
         
-        //Add randomisation etc.
-
+        //Add randomisation (And add the result method return)
         function random() {
             randomNumber = Math.floor(Math.random() * 5);
           }
+       
 
         //Add Timestamp
 
