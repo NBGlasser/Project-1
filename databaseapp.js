@@ -1,42 +1,43 @@
 
-var Usernow = moment().format("DD/MM/YYYY HH:mm:ss");
 
-var lastChange = childSnapshot.val().timeUpdate;
-// UserNow - Last change = minutesSinceLastUpdate
+var lastChange = childSnapshot.val().timeToStore;
 
-// if > 1440 call on function sam ()
-//
-// or use = moment("").fromNow()
+var difference = moment().subtract(moment(lastChange), "minutes");
 
+if (difference > 1440) {
 
-function sam ()
+    function databaseUpdate ()
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    console.log("It's been more than 24 hours");
 
-var dateToStore = moment().format("DD/MM/YYYY");
+}
 
-console.log(dateToStore);
+else {
 
-var timeToStore = moment(00:00:00).format("HH:mm:ss");
+    function noUpdate ()
 
-var timeUpdate = dateToStore + timeToStore;
+    database.once
 
-console.log(timeUpdate);
+    And other stuff
 
-database.ref().set(RecipeOfTheDay);
-//overwrites previous recipe .set
+}
 
 
 
+    function databaseUpdate () {
 
-Var lastChange = //snapshot of time in database set
+        var timeToStore = moment().startOf("day")
 
-// var displayStartConverted = moment(displayStart, "hh:mm").subtract(1, "years");
+        console.log(timeToStore)
 
-// var difference = moment().diff(moment(displayStartConverted), "minutes");
+        database.ref().set(timeToStore);
 
-// var remainder = difference % displayFrequency;
+        //Add randomisation etc.
 
-// var minUntilTrain = displayFrequency - remainder;
+    }
 
-// var nextTrain = moment().add(minUntilTrain, "minutes").format("hh:mm");
+
+
+
+
+
