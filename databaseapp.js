@@ -15,17 +15,31 @@ var config = {
   
   var database = firebase.database();
 
-  database.ref().once("value", function (snapshot){
+var queryURL; 
 
-    var lastChange = childSnapshot.val().timeToStore;
-  });
+var lastChange;
+
+var counter;
+
+database.ref().once("value", function (snapshot){
+
+    if (!snapshot.hasChild("counter")){
+
+        databaseUpdate ()
+
+    } else{ 
 
 
-    var difference = moment().subtract(moment(lastChange), "minutes");
+        database.ref().once("value", function (snapshot){
+
+            lastChange = snapshot.val().timeToStore;
+        });
+
+        var difference = moment().subtract(moment(lastChange), "minutes");
 
         if (difference > 1440) {
 
-            function databaseUpdate ()
+            databaseUpdate()
 
             console.log("It's been more than 24 hours");
 
@@ -33,19 +47,16 @@ var config = {
 
         else {
 
-            function noUpdate ()
-
-            // database.once
-
-            // And other stuff
+            // function pull whatever is in Firebase Function ()
 
         }
 
+    }
 
+
+    //Update the recipe of the day 
 
     function databaseUpdate () {
-
-       //Update the recipe of the day 
 
             var nutrientsArrOfObj = [
                 {
@@ -93,31 +104,59 @@ var config = {
 
                     database.ref().set({counter: 0});
 
+                } else {
+
+                    counter = childSnapshot.val().counter;
+
                 }
-                
-
             });
+
+            if (counter < nutrientsArrOfObj.length) {
+                queryURL = "https://api.edamam.com/search?q=&nutrients%5B" + nutrientsArrOfObj[counter]["nameCode"] + "%5D=" + nutrientsArrOfObj[counter]["suggestedIntakeCode"] + "&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
+                counter ++;
+                } else {
+                counter = 0
+                queryURL = "https://api.edamam.com/search?q=&nutrients%5B" + nutrientsArrOfObj[counter]["nameCode"] + "%5D=" + nutrientsArrOfObj[counter]["suggestedIntakeCode"] + "&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
+                counter ++;
+                }
+
+            $.ajax({
+            
+    
+                url:queryURL,
+                method: "GET"
                 
-
-          
-           
-
-            if (counter < nutrientsArrOfObj.length){
-            queryURL = "https://api.edamam.com/search?q=&nutrients%5B" + nutrientsArrOfObj[counter]["nameCode"] + "%5D=" + nutrientsArrOfObj[counter]["suggestedIntakeCode"] + "&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
-            counter ++;
-            } else {
-            counter = 0
-            queryURL = "https://api.edamam.com/search?q=&nutrients%5B" + nutrientsArrOfObj[counter]["nameCode"] + "%5D=" + nutrientsArrOfObj[counter]["suggestedIntakeCode"] + "&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
-            counter ++;
-            }
-
-            database.ref().set(counter);
-        
-        //Add randomisation (And add the result method return)
-        function random() {
-            randomNumber = Math.floor(Math.random() * 5);
-          }
-       
+            }).then(function(response){
+    
+                randomNumber = Math.floor(Math.random() * recipeList.length);
+    
+                recipeName.text(recipeList[randomNumber]["recipe"]["label"]);
+                recipeImg.attr("src",recipeList[randomNumber]["recipe"]["image"]);
+                var linkToRecipe = $("<a>").text("Go to Recipe").attr("href" ,recipeList[randomNumber]["recipe"]["url"]).addClass("btn btn-primary");
+                var calories = $("<p>").text(Math.floor(recipeList[randomNumber]["recipe"]["calories"]) + "kcal");
+                
+                            var foodName = recipeName
+                            console.log(foodName)
+                            var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=how+to+cook+" + foodName + "&key=AIzaSyDLkMMIuBWt42J1WLEhQ-_pQx0bb9ZmeKo"
+                                $.ajax({
+                                url: queryURL,
+                                method: "GET"
+                            })
+                            .then(function(response) {
+                            var videoId = response.items[0].id.videoId        
+                                })
+    
+               database.ref().set({
+                   
+                recipeName: recipeName, 
+                calories: calories,
+                recipeImg: recipeImg,
+                linkToRecipe: linkToRecipe,
+                videoId: videoId
+    
+                });
+            
+            });
 
         //Add Timestamp
 
@@ -127,12 +166,8 @@ var config = {
 
                 database.ref().set({timeToStore: timeToStore});
                
+        }
 
-            };
-
-
-
-
-
-
-        }) 
+        });
+        
+    })
