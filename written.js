@@ -37,20 +37,13 @@ $(document).ready(function(){
 
     $(".submit").on("click", function(event){
         event.preventDefault()
-        $(".ingredient-button-views").empty()
         ingredients.push($("#ingredients").val().trim())
         diet = $("#diet").val();
         excluded = $("#excluded").val().trim()
         console.log(ingredients)
         
-        for(var i =0; i<ingredients.length; i++){
-        var newDiv = $("<div>")
-        var newIngredient = $("<span>").text(ingredients[i])
-        var newButton = $("<button>").text("x")
-        newDiv.append(newIngredient , newButton)
-        $(".ingredient-button-views").append(newDiv)
-        }
-        
+        displayButton()
+
         if(!ingredients){
             return
         }
@@ -64,4 +57,21 @@ $(document).ready(function(){
         $("#ingredients").val("")
         $("#excluded").val("") 
     })
+
+    function displayButton(){
+        $(".ingredient-button-views").empty()
+        for(var i =0; i<ingredients.length; i++){
+            var newDiv = $("<div>")
+            var newIngredient = $("<span>").text(ingredients[i])
+            var newButton = $("<button>").text("x").addClass("remove-ingredient").attr("data-name", ingredients[i])
+            newDiv.append(newIngredient , newButton)
+            $(".ingredient-button-views").append(newDiv)
+            }
+    }
+
+    $(document).on("click", ".remove-ingredient", function(event){
+        event.preventDefault()
+        ingredients.splice(ingredients.indexOf($(this).attr("data-name")),1)
+        displayButton()
+    } )
 })
