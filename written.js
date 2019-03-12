@@ -17,10 +17,10 @@ $(document).ready(function(){
             return
         }
         if(diet){
-            queryURL = "https://api.edamam.com/search?q=" + ingredients +"&diet=" + diet +"&excluded=" + excluded +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
+            queryURL = "https://api.edamam.com/search?q=" + ingredients +"&diet=" + diet +"&excluded=" + excluded +"&to=9&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
         }
         else{
-            queryURL = "https://api.edamam.com/search?q=" + ingredients +"&excluded=" + excluded +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
+            queryURL = "https://api.edamam.com/search?q=" + ingredients +"&excluded=" + excluded +"&to=9&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
         }
 
         $.ajax({
@@ -36,8 +36,9 @@ $(document).ready(function(){
                 var recipeImg = $("<img>")
                 recipeImg.attr("src",recipeList[i]["recipe"]["image"])
                 var linkToRecipe = $("<a>").text("Go to Recipe").attr("href" ,recipeList[i]["recipe"]["url"]).addClass("btn btn-primary");
+                var youtubeButton = $("<button>").addClass("btn youtube mb-2").attr("data", "youtubeBtn").text("Youtube")
                 var calories = $("<p>").text(Math.floor(recipeList[i]["recipe"]["calories"]) + "kcal")
-                newDiv.append(recipeName, calories, recipeImg, linkToRecipe)
+                newDiv.append(recipeName, calories, recipeImg, linkToRecipe, youtubeButton)
                 $(".recipe-views").append(newDiv)
 
             }
@@ -65,8 +66,8 @@ $(document).ready(function(){
         for(var i =0; i<ingredients.length; i++){
             var newDiv = $("<div>")
             var newIngredient = $("<span>").text(ingredients[i])
-            var newButton = $("<button>").text("x").addClass("remove-ingredient").attr("data-name", ingredients[i])
-            newDiv.append(newIngredient , newButton)
+            var newRemoveButton = $("<button>").text("x").addClass("remove-ingredient").attr("data-name", ingredients[i])
+            newDiv.append(newIngredient , newRemoveButton)
             $(".ingredient-button-views").append(newDiv)
             }
     }
