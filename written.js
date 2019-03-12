@@ -30,17 +30,27 @@ $(document).ready(function(){
                 var calories = $("<p>").text(Math.floor(recipeList[i]["recipe"]["calories"]) + "kcal")
                 newDiv.append(recipeName, calories, recipeImg, linkToRecipe)
                 $(".recipe-views").append(newDiv)
+
             }
         })
     }
 
     $(".submit").on("click", function(event){
         event.preventDefault()
-
+        $(".ingredient-button-views").empty()
         ingredients.push($("#ingredients").val().trim())
         diet = $("#diet").val();
         excluded = $("#excluded").val().trim()
         console.log(ingredients)
+        
+        for(var i =0; i<ingredients.length; i++){
+        var newDiv = $("<div>")
+        var newIngredient = $("<span>").text(ingredients[i])
+        var newButton = $("<button>").text("x")
+        newDiv.append(newIngredient , newButton)
+        $(".ingredient-button-views").append(newDiv)
+        }
+        
         if(!ingredients){
             return
         }
@@ -51,6 +61,7 @@ $(document).ready(function(){
             queryURL = "https://api.edamam.com/search?q=" + ingredients +"&excluded=" + excluded +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
         }
         displayWrittenRecipe()
-        $("#ingredients").val("") 
+        $("#ingredients").val("")
+        $("#excluded").val("") 
     })
 })
