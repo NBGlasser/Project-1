@@ -125,4 +125,13 @@ iframe{
     position: relative
   }
 
-  
+  #recipe-views {
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+  }
+
+  .recipe-container {
+      display: inline-block;
+      width: 30%;
+  }
