@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var ingredients;
+    var ingredients=[];
     var queryURL;
     
     
@@ -35,9 +35,9 @@ $(document).ready(function(){
     }
 
     $(".submit").on("click", function(event){
-        
         event.preventDefault()
-        ingredients= $("#ingredients").val().trim()
+
+        ingredients.push($("#ingredients").val().trim())
         diet = $("#diet").val();
         excluded = $("#excluded").val().trim()
         console.log(ingredients)
@@ -51,6 +51,6 @@ $(document).ready(function(){
             queryURL = "https://api.edamam.com/search?q=" + ingredients +"&excluded=" + excluded +"&app_id=902698cd&app_key=e93d796dd6d7b7ae6039264345846ad3"
         }
         displayWrittenRecipe()
-        
+        $("#ingredients").val("") 
     })
 })
