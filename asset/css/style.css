@@ -1,0 +1,93 @@
+.recipe-pic {
+    height:30%;
+}
+body {
+    position: relative; 
+    background-image: url("../images/background.jpeg");
+    background-size: cover;
+}
+
+#query-div{  background-image: linear-gradient(to bottom, orange, red);
+    color: white;
+}
+
+#jumbo {
+    background-image: linear-gradient(to bottom, red, orange);
+    color: white;
+}
+
+#title {
+    font-size: 72px;
+}
+
+footer {
+    background-image: linear-gradient(to bottom, orange, red);
+    text-align: center;
+    color: white;
+}
+
+.card-header {
+    color: white;
+    background-image: linear-gradient(to bottom, orange, red);
+    height: 75px;
+    font-size: 35px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+text-align: center;
+}
+
+.card{
+margin-top: 37px;
+position: float right ;
+}
+
+.search {
+color: white;
+background-color:rgb(224, 50, 6);
+margin-top: 10px; 
+float:inline-end;
+}
+
+.search:hover{
+    
+    color: orange;
+    background-color:black;
+
+}
+
+.imgPort{
+width: 320px;
+border: 0 none;
+display: inline-block;
+margin-bottom: 30px;
+}
+
+
+.submit {
+    font-size: 20px;  
+color: white;
+background-color:black;
+}
+
+.submit:hover{
+    color: black;
+    background-color:orange;
+
+}
+
+.youtube {
+    background-color: red;
+    color: black;
+    font-size: 20px;
+}
+
+.youtube:hover{
+    background-color: black;
+    color: red;
+
+}
+
+
+iframe{
+    display: none;
+}
+
