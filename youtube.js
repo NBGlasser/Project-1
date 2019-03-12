@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $("#submit").on("click", function(event) {//delete
+  $("button").on("click", function(event) {
       event.preventDefault()
       var foodName = $("#ingredients").val()//delete
       //var foodName = $(this).val()--->undelete
@@ -18,7 +18,7 @@ $(document).ready(function () {
           document.getElementById("video").style.display = "inherit";
 
           })
-      });//delete
+      });
   
 
   
