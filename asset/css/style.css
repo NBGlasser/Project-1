@@ -31,7 +31,7 @@ footer {
     height: 100px;
     padding-top: 40px;
     padding-bottom: 40px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .card-header {
@@ -102,3 +102,12 @@ iframe{
     display: none;
 }
 
+.index-card {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.card-body{
+    padding-bottom: 0px !important;
+    background-color: white;
+}
