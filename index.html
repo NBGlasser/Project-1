@@ -12,89 +12,188 @@
 </head>
 
 <body>
-    <div id="jumbo" class="jumbotron jumbotron-fluid">
-        <h1 id="title" class="text-center">What the Fridge?!</h1>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <!--ingredients --->
-            <div id="query-div" class="container col-6 mt-5 bg-light border border-dark ">
-                <form>
-                    <div class="mb-3 mt-2 border-bottom" id="queries">Ingredients</div>
-                    <div class="form-group">
-                        <!-- <label for="ingredients"></label> -->
-                        <input class="form-control mb-2" id="ingredients" placeholder="What do you have on hand?">
-                        <label>Diet Preference</label>
-                        <select class="custom-select text-muted mr-sm-2 mb-2" id="diet">
-                            <option value="">No Preference</option>
-                            <option value="balanced">Balanced</option>
-                            <option value="high-fiber">High-Fiber</option>
-                            <option value="high-protein	">High-Protein</option>
-                            <option value="low-carb">Low-Carb</option>
-                            <option value="low-fat">Low-Fat</option>
-                            <option value="low-sodium">Low-Sodium</option>
-                        </select>
-                        <label>Exclude Certain Ingredients</label>
-                        <input type="text" class="form-control mb-2" id="excluded"
-                            placeholder="Is there something you don't eat??">
-                        <button type="search" class="btn search" data="searchBtn">Search</button>
-                    </div>
+        <section class="main">
 
-                </form>
-            </div>
-            <!--Your Fridge --->
-            <div class="card col-6 mt-5 bg-light border border-dark">
-                <div class="card-header">
-                    Your Fridge
-                </div>
-                <div class="card-body">
-
-
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
+        <div id="jumbo" class="jumbotron jumbotron-fluid">
+            <h1 id="title" class="text-center">What the Fridge?!</h1>
         </div>
-    </div>
 
-
-    <div class="container">
-        <div class="row">
-            <div class="card bg-light mb-3 col-6">
-                <div class="index-card  card-header">Recipe Of The Day</div>
-                <div class="card-body">
-                    <img src="asset/images/food image.jpg" alt="foodPic" class="img-thumbnail">
-                    <div id="cardText">
-                        <p>Current</p>
-                        <p>Recommended</p>
-
-
-                    </div>
+        <div class="container">
+            <div class="row">
+                <!--ingredients --->
+                <div id="query-div" class="container col-6 mt-5 bg-light border border-light ">
+                    <form>
+                        <div class="mb-3 mt-2 border-bottom" id="queries">Ingredients</div>
+                        <div class="form-group">
+                            <!-- <label for="ingredients"></label> -->
+                            <input class="form-control mb-2" id="ingredients" placeholder="What do you have on hand?">
+                            <label>Diet Preference</label>
+                            <select class="custom-select text-muted mr-sm-2 mb-2" id="diet">
+                                <option value="">No Preference</option>
+                                <option value="balanced">Balanced</option>
+                                <option value="high-fiber">High-Fiber</option>
+                                <option value="high-protein	">High-Protein</option>
+                                <option value="low-carb">Low-Carb</option>
+                                <option value="low-fat">Low-Fat</option>
+                                <option value="low-sodium">Low-Sodium</option>
+                            </select>
+                            <label>Exclude Certain Ingredients</label>
+                            <input type="text" class="form-control mb-2" id="excluded"
+                                placeholder="Is there something you don't eat??">
+                            <a type="search" class="btn search" href="#nextPage" data="searchBtn">Search</a>
+                        </div>
+                        
+                    </form>
                 </div>
-            </div>
-            <div class="card bg-light mb-3 col-6">
-                <div class="index-card card-header">YouTube Video</div>
-                <div class="card-body">
-                    <iframe id="video" width="560" height="315"></iframe>
-                    <div id="cardText">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, modi. Repellat unde illo
-                            numquam aliquid ipsa? Ipsam harum porro soluta facere dolorem dolorum ipsa itaque, quibusdam
-                            consectetur ab
-                            facilis quas!</p>
+                <!--Your Fridge --->
+                <div class="card col-6 mt-5 bg-light border border-light ">
+                    <div class="index-card card-header">
+                        Your Fridge
+                    </div>
+                    <div class="card-body">
+
 
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="card bg-light mb-3 col-6">
+                    <div class="index-card  card-header">Recipe Of The Day</div>
+                    <div class="card-body">
+                        <img src="asset/images/food image.jpg" alt="foodPic" class="img-thumbnail">
+                        <div id="cardText">
+                            <p>Current</p>
+                            <p>Recommended</p>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-light mb-3 col-6">
+                    <div class="index-card card-header">YouTube Video</div>
+                    <div class="card-body">
+                        <iframe id="video" width="560" height="315"></iframe>
+                        <div id="cardText">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, modi. Repellat unde illo
+                                numquam aliquid ipsa? Ipsam harum porro soluta facere dolorem dolorum ipsa itaque,
+                                quibusdam
+                                consectetur ab
+                                facilis quas!</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <section class="secondary" id="nextPage">
+
+        <div class="container mb-3">
+
+            <div class="mb-3">
+                <div class="card-header" style="color:white">Recipes</div>
+                <div class="card-body">
+
+                    <div class="imgPort">
+                        <!-- <div class="row">
+                            <div class="col-sm-4 text-center mt-3 border border-dark">
+                                <img src="asset/images/food-image.jpg" class="recipe-pic">
+                                <h3>Recipe 1</h3>
+                                <button type="submit" class="btn submit mb-2" data="submitBtn">Go To Recipe</button>
+                                <button type="youtube" class="btn youtube mb-2" data="youtubeBtn">YouTube</button>
+                            </div>
+
+                            <div class="col-sm-4 text-center mt-3 border border-dark">
+                                <img src="asset/images/food-image.jpg" class="recipe-pic">
+                                <h3>Recipe 2</h3>
+                                <button type="submit" class="btn submit mb-2" data="submitBtn">Go To Recipe</button>
+                                <button type="youtube" class="btn youtube mb-2" data="youtubeBtn">YouTube</button>
+                            </div>
+
+                            <div class="col-sm-4 text-center mt-3 border border-dark">
+                                <img src="asset/images/food-image.jpg" class="recipe-pic">
+                                <h3>Recipe 3</h3>
+                                <button type="submit" class="btn submit mb-2" data="submitBtn">Go To Recipe</button>
+                                <button type="youtube" class="btn youtube mb-2" data="youtubeBtn">YouTube</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 text-center mt-3 border border-dark">
+                                <img src="asset/images/food-image.jpg" class="recipe-pic">
+                                <h3>Recipe 4</h3>
+                                <button type="submit" class="btn submit mb-2" data="submitBtn">Go To Recipe</button>
+                                <button type="youtube" class="btn youtube mb-2" data="youtubeBtn">YouTube</button>
+                            </div>
+
+                            <div class="col-sm-4 text-center mt-3 border border-dark">
+                                <img src="asset/images/food-image.jpg" class="recipe-pic">
+                                <h3>Recipe 5</h3>
+                                <button type="submit" class="btn submit mb-2" data="submitBtn">Go To Recipe</button>
+                                <button type="youtube" class="btn youtube mb-2" data="youtubeBtn">YouTube</button>
+                            </div>
+
+                            <div class="col-sm-4 text-center mt-3 border border-dark">
+                                <img src="asset/images/food-image.jpg" class="recipe-pic">
+                                <h3>Recipe 6</h3>
+                                <button type="submit" class="btn submit mb-2" data="submitBtn">Go To Recipe</button>
+                                <button type="youtube" class="btn youtube mb-2" data="youtubeBtn">YouTube</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4 text-center mt-3 border border-dark">
+                                <img src="asset/images/food-image.jpg" class="recipe-pic">
+                                <h3>Recipe 7</h3>
+                                <button type="submit" class="btn submit mb-2" data="submitBtn">Go To Recipe</button>
+                                <button type="youtube" class="btn youtube mb-2" data="youtubeBtn">YouTube</button>
+                            </div>
+
+                            <div class="col-sm-4 text-center mt-3 border border-dark">
+                                <img src="asset/images/food-image.jpg" class="recipe-pic">
+                                <h3>Recipe 8</h3>
+                                <button type="submit" class="btn submit mb-2" data="submitBtn">Go To Recipe</button>
+                                <button type="youtube" class="btn youtube mb-2" data="youtubeBtn">YouTube</button>
+                            </div>
+
+                            <div class="col-sm-4 text-center mt-3 border border-dark">
+                                <img src="asset/images/food-image.jpg" class="recipe-pic">
+                                <h3>Recipe 9</h3>
+                                <button type="submit" class="btn submit mb-2" data="submitBtn">Go To Recipe</button>
+                                <button type="youtube" class="btn youtube mb-2" data="youtubeBtn">YouTube</button>
+                            </div> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- <div class="container">
 

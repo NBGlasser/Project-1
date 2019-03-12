@@ -30,7 +30,7 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     
-        var foodName = recipeOfDayName
+        var foodName = recipeName
         console.log(foodName)
         var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=how+to+cook+" + foodName + "&key=AIzaSyDLkMMIuBWt42J1WLEhQ-_pQx0bb9ZmeKo"
             $.ajax({
@@ -41,7 +41,7 @@ $(document).ready(function () {
         .then(function(response) {
         var videoId = response.items[0].id.videoId
         console.log(videoId)
-            $("#video").attr("src", "https://www.youtube.com/watch?v=" + videoId);
+            $("#video").attr("src", "https://www.youtube.com/embed/" + videoId);
             document.getElementById("video").style.display = "inherit";
   
             })
