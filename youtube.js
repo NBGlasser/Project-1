@@ -1,7 +1,7 @@
 // query results
 $(document).ready(function () {
-    $(".youtube").on("click", function(event) {
-  
+    $("button").on("click", function(event) {
+        event.preventDefault()
       
       var foodName = $(this).val()
       console.log(foodName)
@@ -14,8 +14,8 @@ $(document).ready(function () {
       .then(function(response) {
       var videoId = response.items[0].id.videoId
       console.log(videoId)
-          $(".youtube").attr("href", "https://www.youtube.com/watch?v=" + videoId);
-
+        //   $(this).attr("href", "https://www.youtube.com/watch?v=" + videoId);
+        window.location.href = "https://www.youtube.com/watch?v=" + videoId
           })
       });
     });
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
 
 
-// recipe of the day
+//recipe of the day
 $(document).ready(function () {
 
     
