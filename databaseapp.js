@@ -152,8 +152,9 @@ database.ref().once("value", function (snapshot){
                 calories: calories,
                 recipeImg: recipeImg,
                 linkToRecipe: linkToRecipe,
-                videoId: videoId
-    
+                videoId: videoId,
+                // recommended: recommended;
+
                 });
             
             });
