@@ -53,6 +53,7 @@ color: white;
 background-color:goldenrod;
 margin-top: 10px; 
 float:inline-end;
+
 }
 
 .search:hover{
@@ -111,3 +112,26 @@ iframe{
     padding-bottom: 0px !important;
     background-color: white;
 }
+
+.main {
+  
+    width: 100%;
+    /* rgb stands for red, green, blue using a combination of these three colors, you can make ANY color. Play around with th numbers a little bit! */
+    /* position: relative; */
+  }
+  .secondary {
+ 
+    width: 100vw;
+    position: relative
+  }
+
+  #recipe-views {
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+  }
+
+  .recipe-container {
+      display: inline-block;
+      width: 30%;
+  }
