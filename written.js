@@ -2,10 +2,17 @@ $(document).ready(function(){
     var ingredients;
     var queryURL;
     
+    
+
     function displayWrittenRecipe() {
+        jQuery.ajaxPrefilter(function (options) {
+            if (options.crossDomain && jQuery.support.cors) {
+              options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+            }
+          });
+        
         $(".recipe-views").empty()
 
-        
         $.ajax({
             url:queryURL,
             method: "GET"
@@ -20,7 +27,8 @@ $(document).ready(function(){
                 var recipeImg = $("<img>")
                 recipeImg.attr("src",recipeList[i]["recipe"]["image"])
                 var linkToRecipe = $("<a>").text("Go to Recipe").attr("href" ,recipeList[i]["recipe"]["url"]).addClass("btn btn-primary");
-                newDiv.append(recipeName, recipeImg, linkToRecipe)
+                var calories = $("<p>").text(Math.floor(recipeList[i]["recipe"]["calories"]) + "kcal")
+                newDiv.append(recipeName, calories, recipeImg, linkToRecipe)
                 $(".recipe-views").append(newDiv)
             }
         })
