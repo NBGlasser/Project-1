@@ -1,6 +1,11 @@
 .recipe-pic {
     height:30%;
 }
+
+.recipe-pic:hover {
+    transform: scale(1.1);
+}
+
 body {
     position: relative; 
     background-image: url("../images/background.jpeg");
@@ -89,7 +94,6 @@ padding-bottom: 7px;
     background-color: red;
     color: black;
     font-size: 20px;
-    padding-bottom: 7px;
 }
 
 .youtube:hover{
@@ -135,3 +139,12 @@ iframe{
       display: inline-block;
       width: 30%;
   }
+
+  .recipe-link {
+    font-size: 20px
+  }
+
+#video {
+    width: 500px;
+    height: 300px
+}
