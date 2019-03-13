@@ -85,7 +85,7 @@ $(document).ready(function () {
         for (var i = 0; i < ingredients.length; i++) {
             var newDiv = $("<div>")
             var newIngredient = $("<span>").text(ingredients[i])
-            var newRemoveButton = $("<button>").text("x").addClass("remove-ingredient").attr("data-name", ingredients[i])
+            var newRemoveButton = $("<button>").text("x").addClass("remove-ingredient btn btn-dark color-light").attr("data-name", ingredients[i])
             newDiv.append(newRemoveButton," " ,newIngredient )
             $(".ingredient-button-views").append(newDiv)
         }
