@@ -137,7 +137,7 @@ iframe{
 
   .recipe-container {
       display: inline-block;
-      width: 30%;
+      /* width: 30%; */
   }
 
   .recipe-link {
