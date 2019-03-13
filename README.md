@@ -19,7 +19,7 @@ The app is limited to a set number of returns that are manageable and easy to ad
 
 ## How Everything Works
 
-First our application pushes input ingredients into an array and whenever a new ingredient is added our page dynamically updates. Additionally our app takes into account any dietary restrictions a user inputs. The user is then allowed to choose between a webpage with the recipe written out or a youtube video with instructions on how to make the recipe. At the same time, our app uses firebase to display a dynamically generated recipe of the day that updates every 24 hours and similarly provides a written recipe and youtube video.
+First our application pushes input ingredients into an array and whenever a new ingredient is added our page dynamically updates. Additionally our app takes into account any dietary restrictions a user inputs. The user is then allowed to choose between a webpage with the recipe written out or a youtube video with instructions on how to make the recipe. At the same time, our app uses firebase to display a dynamically generated recipe of the day that updates every 24 hours and similarly provides a written recipe and youtube video. 
 
 
 
