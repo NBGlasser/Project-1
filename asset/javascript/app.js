@@ -42,6 +42,7 @@ $(document).ready(function () {
                 
                 var newCardBody = $("<div>").addClass("card-body")
                 var linkToRecipe = $("<a>").text("Go to Recipe").attr("href", recipeList[i]["recipe"]["url"]).addClass("btn btn-dark color-light recipe-link justify-content-center");
+                linkToRecipe.attr("target", "_blank")
                 var youtubeButton = $("<button>").addClass("btn youtube mx-auto")
                 .attr("data-name", recipeList[i]["recipe"]["label"]).text("Youtube")
                 newCardBody.append(recipeName, linkToRecipe, youtubeButton)
@@ -114,7 +115,8 @@ $(document).ready(function () {
       var videoId = response.items[0].id.videoId
       console.log(videoId)
         //   $(this).attr("href", "https://www.youtube.com/watch?v=" + videoId);
-        window.location.href = "https://www.youtube.com/watch?v=" + videoId
+        window.open("https://www.youtube.com/watch?v=" + videoId,  '_blank'
+        );
           })
       });
 
