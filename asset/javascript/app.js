@@ -41,7 +41,7 @@ $(document).ready(function () {
                 recipeImg.attr("src", recipeList[i]["recipe"]["image"])
                 
                 var newCardBody = $("<div>").addClass("card-body")
-                var linkToRecipe = $("<a>").text("Go to Recipe").attr("href", recipeList[i]["recipe"]["url"]).addClass("btn btn-primary recipe-link justify-content-center");
+                var linkToRecipe = $("<a>").text("Go to Recipe").attr("href", recipeList[i]["recipe"]["url"]).addClass("btn btn-dark color-light recipe-link justify-content-center");
                 var youtubeButton = $("<button>").addClass("btn youtube mx-auto")
                 .attr("data-name", recipeList[i]["recipe"]["label"]).text("Youtube")
                 newCardBody.append(recipeName, linkToRecipe, youtubeButton)
@@ -173,7 +173,7 @@ $(document).ready(function () {
             var recipeNameDiv = $("<h5>").text(snapshot.val()["daily-recipe"].recipeName);
             recipeNameDiv.addClass("card-title text-center")
             var recipeImgDiv = $("<img>").attr("src", snapshot.val()["daily-recipe"].recipeImg);
-            var linkToRecipe = $("<a>").text("Go to Recipe").attr("href", snapshot.val()["daily-recipe"]["linkToRecipe"]).addClass("btn btn-primary recipe-link mx-auto");
+            var linkToRecipe = $("<a>").text("Go to Recipe").attr("href", snapshot.val()["daily-recipe"]["linkToRecipe"]).addClass(" btn btn-dark color-light recipe-link mx-auto");
             $(".recipe-of-day").append(recipeImgDiv,recipeNameDiv, linkToRecipe);
             $("#video").attr("src", "https://www.youtube.com/embed/" + snapshot.val()["daily-recipe"].videoId);
                 document.getElementById("video").style.display = "inherit";
