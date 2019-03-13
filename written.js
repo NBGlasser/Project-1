@@ -40,7 +40,7 @@ $(document).ready(function () {
                 var recipeImg = $("<img>").addClass("recipe-pic")
                 recipeImg.attr("src", recipeList[i]["recipe"]["image"])
                 var linkToRecipe = $("<a>").text("Go to Recipe").attr("href", recipeList[i]["recipe"]["url"]).addClass("btn btn-primary");
-                var youtubeButton = $("<button>").addClass("btn youtube mb-2").attr("data", "youtubeBtn").text("Youtube")
+                var youtubeButton = $("<button>").addClass("btn youtube mb-2").attr("data-name", recipeList[i]["recipe"]["label"]).text("Youtube")
                 var calories = $("<p>").text(Math.floor(recipeList[i]["recipe"]["calories"]) + "kcal")
                 newDiv.append(recipeName, calories, recipeImg, linkToRecipe, youtubeButton)
                 $("#recipe-views").append(newDiv)
