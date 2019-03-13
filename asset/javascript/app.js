@@ -34,15 +34,19 @@ $(document).ready(function () {
             for (var i = 0; i < recipeList.length; i++) {
 
 
-                var newDiv = $("<div>").addClass("recipe-container m-2 rounded ")
-                var recipeName = $("<h5>")
+                var newDiv = $("<div>").addClass("recipe-container m-2 card ").attr("style", "width: 21rem;")
+                var recipeName = $("<h5>").addClass("card-title text-center")
                 recipeName.text(recipeList[i]["recipe"]["label"])
-                var recipeImg = $("<img>").addClass("recipe-pic card-img")
+                var recipeImg = $("<img>").addClass("recipe-pic card-img-top")
                 recipeImg.attr("src", recipeList[i]["recipe"]["image"])
-                var linkToRecipe = $("<a>").text("Go to Recipe").attr("href", recipeList[i]["recipe"]["url"]).addClass("btn btn-primary recipe-link");
-                var youtubeButton = $("<button>").addClass("btn youtube").attr("data-name", recipeList[i]["recipe"]["label"]).text("Youtube")
+                
+                var newCardBody = $("<div>").addClass("card-body")
+                var linkToRecipe = $("<a>").text("Go to Recipe").attr("href", recipeList[i]["recipe"]["url"]).addClass("btn btn-primary recipe-link justify-content-center");
+                var youtubeButton = $("<button>").addClass("btn youtube mx-auto")
+                .attr("data-name", recipeList[i]["recipe"]["label"]).text("Youtube")
+                newCardBody.append(recipeName, linkToRecipe, youtubeButton)
                 // var calories = $("<p>").text(Math.floor(recipeList[i]["recipe"]["calories"]) + "kcal")
-                newDiv.append(recipeName, recipeImg, linkToRecipe, youtubeButton)
+                newDiv.append(recipeImg, newCardBody)
                 $("#recipe-views").append(newDiv)
 
 
@@ -143,13 +147,18 @@ $(document).ready(function () {
 
         console.log(snapshot.val())
         counter = snapshot.val().counter
-        console.log(snapshot.val().counter)
+        console.log("initial counter", snapshot.val().counter)
         console.log(snapshot.val().lastChange)
 
 
         var difference = moment().diff(moment(snapshot.val().lastChange, "MM-DD-YYYY HH:mm:ss"), "minutes");
         console.log(difference)
         if (difference > 1440) {
+            console.log("difference reached")
+            if (snapshot.val().counter > 4){
+                console.log("counter greater than 4")
+                counter = -1
+            }
             lastChange = moment().startOf("day").format("MM-DD-YYYY HH:mm:ss")
             console.log("Last Change: ", lastChange)
             database.ref().update({
@@ -161,9 +170,11 @@ $(document).ready(function () {
 
         }
         else {
-            var recipeNameDiv = $("<div>").text(snapshot.val()["daily-recipe"].recipeName);
+            var recipeNameDiv = $("<h5>").text(snapshot.val()["daily-recipe"].recipeName);
+            recipeNameDiv.addClass("card-title text-center")
             var recipeImgDiv = $("<img>").attr("src", snapshot.val()["daily-recipe"].recipeImg);
-            $(".recipe-of-day").append(recipeNameDiv, recipeImgDiv);
+            var linkToRecipe = $("<a>").text("Go to Recipe").attr("href", snapshot.val()["daily-recipe"]["linkToRecipe"]).addClass("btn btn-primary recipe-link mx-auto");
+            $(".recipe-of-day").append(recipeImgDiv,recipeNameDiv, linkToRecipe);
             $("#video").attr("src", "https://www.youtube.com/embed/" + snapshot.val()["daily-recipe"].videoId);
                 document.getElementById("video").style.display = "inherit";
         }
@@ -231,7 +242,7 @@ $(document).ready(function () {
                 var randomNumber = Math.floor(Math.random() * response.hits.length);
                 console.log(randomNumber)
                 var recipeName = response.hits[randomNumber]["recipe"]["label"];
-                var recipeNameDiv = $("<div>").text(recipeName)
+                var recipeNameDiv = $("<h5>").text(recipeName)
                 console.log(recipeName)
                 var recipeImg = response.hits[randomNumber]["recipe"]["image"]
                 console.log(recipeImg)
