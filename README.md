@@ -2,8 +2,8 @@
 
 ![] (placeholder.png)
 
-## Problem / Motivation
 
+## Problem / Motivation
 
 When inputting a simple list of ingredients and wanting recipe matches: there is an inability to find a good result format for said recipe based on current design of search engine.
 
@@ -16,9 +16,11 @@ How it addresses the problem:
 
 The app is limited to a set number of returns that are manageable and easy to add to dynamically, in the day and age of millennials, video cooking tutorials included in the returns. Additionally, the app automatically looks up video tutorials on Youtube for whichever recipe the user selected. Finally, our app includes a recipe of the day with full Youtube and Edamam support.
 
+
 ## How Everything Works
 
 First our application pushes input ingredients into an array and whenever a new ingredient is added our page dynamically updates. Additionally our app takes into account any dietary restrictions a user inputs. The user is then allowed to choose between a webpage with the recipe written out or a youtube video with instructions on how to make the recipe. At the same time, our app uses firebase to display a dynamically generated recipe of the day that updates every 24 hours and similarly provides a written recipe and youtube video.
+
 
 
 ## Tools used in WTF
@@ -34,3 +36,8 @@ First our application pushes input ingredients into an array and whenever a new 
 | Youtube API |Receives Ajax calls and returns video data | Allows our userbase to access youtube videos |
 | Firebase | Stores data specified by us in JavaScript | Allows us to run our recipe of the day |
 | Moment.js | Allows for easy conversion of time | Makes it feasible to detect what day it is, letting us update our recipe of the day accordingly |
+
+
+## Things we wanted to do
+
+The biggest thing we wanted to do but didn't have enough time for was implementing a comment section and rating system for each individual recipe on top of the firebase recipe of the day, but firebase was our least cooperative piece of technology so we didn't have much of a margin for that. We also were going to include calorie information but it ended up making our page seem too cluttered.
