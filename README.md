@@ -1,8 +1,9 @@
-![] (placeholder.png)
-
+# What The Fridge?!
+Interactive application that help user find recipe based on ingredients input and other search parameters.
+![](Image/app.png)
 
 ## Problem / Motivation
-
+![alt text](Image/ReadMe.png "Problem image")
 When inputting a simple list of ingredients and wanting recipe matches: there is an inability to find a good result format for said recipe based on current design of search engine.
 
 Example: I have potatoes, tomatoes, and chicken, and I am looking for a matching recipe, here is the Google search result:
