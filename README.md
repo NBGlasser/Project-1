@@ -34,4 +34,3 @@ First our application pushes input ingredients into an array and whenever a new 
 | Youtube API |Receives Ajax calls and returns video data | Allows our userbase to access youtube videos |
 | Firebase | Stores data specified by us in JavaScript | Allows us to run our recipe of the day |
 | Moment.js | Allows for easy conversion of time | Makes it feasible to detect what day it is, letting us update our recipe of the day accordingly |
-| New Library | Something | Other thing
